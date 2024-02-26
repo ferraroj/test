@@ -1,0 +1,53 @@
+Some Basics
+git status
+git status *
+git commit -m "Commit Notes"
+git log -> shows commit log
+git reset --hard hashHereFromCommitLog    -> Rolls back changes to this commit
+git reflog -> Shows all logs even after rolling back
+git reflog expire --expire=now --all    -> Deletes the ref log to have a clean start.
+
+Branching
+git branch feature/sample3-work   -> Creates a new branch called "feature/sample3-work". 
+git checkout feature/sample3-work -> Switches the working directory to the new branch.
+git checkout -b feature/sample3-work -> This command combines both commands above, creating the branch and then switching to it in one step.
+**commit your changes to the new branch**
+git checkout master -> get back to master branch
+git merge feature/sample3-work -> While in the branch you want to merge changes to, this command will merge those changes into that branch
+git commit -m "Merge feature/sample3-work into master" -> This command commits the merge.
+
+
+Some things to keep in mind:
+-If you change a file while in a branch and move back to master, the file on the hard drive that you changed in the branch will get changed back to the status of the file as it existed in master (the state it was in before you made the changes). You'll have to merge the change from the branch into master to see the files updated while in the master branch.
+
+-File deletions are different. If you delete a file while in a branch, git tracks the deletion. However, when you switch branches (lets say back to master) after delting a file, the deletion is applied to the working directory immediately upon switching branches and is not reversible in the same way that just editing a file is. However, the file can be recovered by using the "git restore filename.txt" command, or by rolling back to a previous commitment.
+
+-master tends to be used in git while "main" tends to be used in github.
+
+
+To load your local repo into a new (but empty) repo in GitHub:
+git remote add origin <repository_url>
+git remote -v
+git push -u origin main
+
+If this doesn't work, you may have to create a new branch "main" and switch to it using: git checkout -b main
+
+To see if your local repo is synced with GitHub:
+git fetch
+git status
+
+git branch -d branchName <- To delete a branch name: 
+
+git branch -D master <- To force delete a branch name if everything hasn't been moved into master
+
+
+Keeping branches in sync with main
+git merge main -> If there have been commits in main, and you want to sync those into another branch, run this command in the other branch
+git rebase main -> This does the same thing but preserves the commit history in both branches.
+
+
+To create and work with a new branch in github itself
+git checkout -b new_branch_name -> Creates a new branch in the local repo and switches the working directory to the new branch
+git push --set-upstrean origin new_branch_name -> Creates a new branch in your GitHub repo and set up tracking so that you can push and pull changes to and from the branch on GitHub.
+git push origin new_branch_name -> Local branch commits aren't automatically saved into github even though the branch exists in github. After creating a new branch locally and making a commit, you can run this to send the changes from the local branch to the remote branch.
+
