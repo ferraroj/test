@@ -51,3 +51,20 @@ git checkout -b new_branch_name -> Creates a new branch in the local repo and sw
 git push --set-upstrean origin new_branch_name -> Creates a new branch in your GitHub repo and set up tracking so that you can push and pull changes to and from the branch on GitHub.
 git push origin new_branch_name -> Local branch commits aren't automatically saved into github even though the branch exists in github. After creating a new branch locally and making a commit, you can run this to send the changes from the local branch to the remote branch.
 
+
+Final notes from my friend Chat GPT:
+It's common practice to merge changes from feature branches into the main branch (often named main or master) on GitHub or any Git repository hosting service. This workflow is often used in collaborative development to integrate new features, bug fixes, or updates into the main codebase.
+
+Here's how it typically works:
+
+Create a feature branch: Developers work on new features, bug fixes, or updates in separate branches, isolating their changes from the main branch.
+
+Push changes to GitHub: Once the changes are ready, developers push their feature branches to GitHub.
+
+Create a pull request: On GitHub, developers create a pull request (PR) to merge their feature branch into the main branch. This allows other team members to review the changes, discuss them, and ensure quality before merging.
+
+Merge the pull request: After review and approval, the pull request is merged into the main branch, incorporating the changes into the main codebase.
+
+Continuous Integration (CI)/Continuous Deployment (CD): Automated processes such as CI/CD pipelines can be triggered upon merging to ensure that the changes integrate smoothly with the main branch and meet any necessary quality criteria before deployment.
+
+This workflow helps maintain a clean and stable main branch while allowing developers to work on new features independently. It also facilitates collaboration and code review, ensuring that changes are thoroughly inspected before being merged into the main codebase.
